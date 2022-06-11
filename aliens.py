@@ -5,7 +5,18 @@ width = 800
 height = 600
 window = pygame.display.set_mode((width, height))
 clock = time.Clock()
+direction = 0
 
+class GameSprite(sprite.Sprite):
+   def __init__(self, y, x, player_image, player_x, player_y, player_speed):
+       super().__init__()
+       self.image = transform.scale(image.load(player_image), (x, y))
+       self.speed = player_speed
+       self.rect = self.image.get_rect()
+       self.rect.x = player_x
+       self.rect.y = player_y
+    def reset(self):
+       window.blit(self.image, (self.rect.x, self.rect.y))
 #управление
 class Player(GameSprite):
     def update(self):
@@ -24,6 +35,21 @@ class Bullet(GameSprite):
         if self.rect.y < 0:
            self.kill()
            global bullet_shot = False
+class Enemy(GameSprite):
+   def update(self):
+       if self.rect.x >= 50 and self.rect.x <= 450 and i == 0:
+            self.rect.x += 10
+       if self.rect.x >= 450:
+            self.rect.y += 25
+            i += 1
+       if self.rect.x <= 50:
+            self.rect.y += 25
+            i -= 1
+        if self.rect.x >= 50 and self.rect.x <= 450 and i == 1:
+            self.rect.x -= 10
+    def fire(self):
+        bullet = Bullet(img_bullet, self.rect.centerx - 50, self.rect.top, 75, 60, -10)
+        bullets.add(bullet)
 
 game = True
 finish = False
