@@ -1,23 +1,24 @@
 from pygame import *
 
 font.init()
-font2 = font.SysFont('Arial', 36)
+font2 = font.SysFont('Calibri', 45)
 
-back = (1,255, 40)
-win_width = 1280
-win_height = 720
+back = (1, 1, 1)
+win_width = 800
+win_height = 600
 window = display.set_mode((win_width, win_height))
 display.set_caption("IGRA")
 
 score1 = 0
+lives1 = 0
 h_lines = []
 v_lines = []
 
-for i in range(10):
-    line = (win_width/(10-i))
+for i in range(40):
+    line = ((win_height/40) * i)
     h_lines.append(line)
-for r in range(10):
-    line = (win_width/(10-r))
+for r in range(50):
+    line = ((win_width/50) * r)
     v_lines.append(line)
 
 game = True
@@ -32,8 +33,12 @@ while game:
 
     if finish != True:
         window.fill(back)
-        text = font2.render("score: " + str(score1), 1, (10,1,255))
-        window.blit(text, (h_lines[1], v_lines[1]))
+
+        text = font2.render("score: ", 1, (255,255,255))
+        window.blit(text, (v_lines[1], h_lines[1]))
+
+        text = font2.render("lives: ", 1, (255,255,255))
+        window.blit(text, (v_lines[43], h_lines[1]))
 
     display.update()
     clock.tick(FPS)
