@@ -46,6 +46,10 @@ while game != False:
         window.blit(background,(0,0))
 
         Bullet.update()
+        
+        player.update()
+        
+        enemy.update()
 
 
 
