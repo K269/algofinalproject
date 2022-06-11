@@ -33,11 +33,7 @@ bullet_shot = False
 while game != False:
     pygame.display.update()
     clock.tick(40)
-
-    if ent.key = Key_Space and bullet_shot == False:
-        player.fire()
         
-
     for e in event.get():
         if e.type == QUIT:
             run = False
