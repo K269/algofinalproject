@@ -41,10 +41,6 @@ while game != False:
     for e in event.get():
         if e.type == QUIT:
             run = False
-        elif e.type == KEYDOWN:
-            if e.key == K_SPACE:
-                fire_sound.play()
-                ship.fire()
  
     if not finish:
         window.blit(background,(0,0))
