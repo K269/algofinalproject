@@ -40,5 +40,12 @@ while game:
         text = font2.render("lives: ", 1, (255,255,255))
         window.blit(text, (v_lines[43], h_lines[1]))
 
+        text = font2.render(str(score1), 1, (255,255,255))
+        window.blit(text, (v_lines[1], h_lines[4]))
+
+        text = font2.render(str(lives1), 1, (255,255,255))
+        window.blit(text, (v_lines[47], h_lines[4]))
+
     display.update()
     clock.tick(FPS)
+
